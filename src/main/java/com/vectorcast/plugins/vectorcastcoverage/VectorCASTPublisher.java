@@ -228,37 +228,37 @@ public class VectorCASTPublisher extends Recorder {
 		if (action.getMCDCCoverage() == null)
 			return false;
 
-		return action.getMCDCCoverage().getPercentage() < healthReports.getMinMCDC();
+		return action.getMCDCCoverage().getPercentageFloat() < healthReports.getMinMCDC();
 	}
 
 	private boolean isBasisPathCoverageOk(final VectorCASTBuildAction action) throws NullPointerException{
 		if (action.getBasisPathCoverage() == null)
 			return false;
-		return action.getBasisPathCoverage().getPercentage() < healthReports.getMinBasisPath();
+		return action.getBasisPathCoverage().getPercentageFloat() < healthReports.getMinBasisPath();
 	}
 
 	private boolean isStatementCoverageOk(final VectorCASTBuildAction action) throws NullPointerException{
 		if (action.getStatementCoverage() == null)
 			return false;
-		return action.getStatementCoverage().getPercentage() < healthReports.getMinStatement();
+		return action.getStatementCoverage().getPercentageFloat() < healthReports.getMinStatement();
 	}
 
 	private boolean isBranchCoverageOk(final VectorCASTBuildAction action) throws NullPointerException{
 		if (action.getBranchCoverage() == null)
 			return false;
-		return action.getBranchCoverage().getPercentage() < healthReports.getMinBranch();
+		return action.getBranchCoverage().getPercentageFloat() < healthReports.getMinBranch();
 	}
 	
 	private boolean isFunctionCoverageOk(final VectorCASTBuildAction action) throws NullPointerException {
 		if (action.getFunctionCoverage() == null)
 			return false;
-		return action.getFunctionCoverage().getPercentage() < healthReports.getMinFunction();
+		return action.getFunctionCoverage().getPercentageFloat() < healthReports.getMinFunction();
 	}
 
 	private boolean isFunctionCallCoverageOk(final VectorCASTBuildAction action) throws NullPointerException {
 		if (action.getFunctionCallCoverage() == null)
 			return false;
-		return action.getFunctionCallCoverage().getPercentage() < healthReports.getMinFunctionCall();
+		return action.getFunctionCallCoverage().getPercentageFloat() < healthReports.getMinFunctionCall();
 	}
 
     @Override

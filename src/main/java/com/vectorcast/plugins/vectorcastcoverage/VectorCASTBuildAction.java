@@ -84,7 +84,7 @@ public final class VectorCASTBuildAction extends CoverageObject<VectorCASTBuildA
             return null;
         }
         thresholds.ensureValid();
-        int score = 100, percent;
+        float score = 100, percent;
         ArrayList<Localizable> reports = new ArrayList<Localizable>(5);
         if (Statement != null && thresholds.getMaxStatement() > 0) {
             percent = Statement.getPercentage();
@@ -140,15 +140,15 @@ public final class VectorCASTBuildAction extends CoverageObject<VectorCASTBuildA
         // Collect params and replace nulls with empty string
         Object[] args = reports.toArray(new Object[6]);
         for (int i = 5; i >= 0; i--) if (args[i]==null) args[i] = ""; else break;
-        return new HealthReport(score, Messages._BuildAction_Description(
+        return new HealthReport(Math.round(score), Messages._BuildAction_Description(
                 args[0], args[1], args[2], args[3], args[4],args[5]));
     }
 
-    private static int updateHealthScore(int score, int min, int value, int max) {
+    private static float updateHealthScore(float score, float min, float value, float max) {
         if (value >= max) return score;
         if (value <= min) return 0;
         assert max != min;
-        final int scaled = (int) (100.0 * ((float) value - min) / (max - min));
+        final float scaled = (float) (100.0 * ((float) value - min) / (max - min));
         if (scaled < score) return scaled;
         return score;
     }
