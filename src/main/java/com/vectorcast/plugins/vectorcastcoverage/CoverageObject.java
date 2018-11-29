@@ -31,8 +31,10 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Calendar;
+import java.util.Locale;
 import org.jfree.chart.renderer.category.BarRenderer;
 
 /**
@@ -178,9 +180,9 @@ public abstract class CoverageObject<SELF extends CoverageObject<SELF>> {
     }
 
     
-    static NumberFormat dataFormat = new DecimalFormat("000.00");
-    static NumberFormat percentFormat = new DecimalFormat("0.0");
-    static NumberFormat intFormat = new DecimalFormat("0");
+    static NumberFormat dataFormat = new DecimalFormat("000.00", DecimalFormatSymbols.getInstance(new Locale("en")));
+    static NumberFormat percentFormat = new DecimalFormat("0.0", DecimalFormatSymbols.getInstance(new Locale("en")));
+    static NumberFormat intFormat = new DecimalFormat("0", DecimalFormatSymbols.getInstance(new Locale("en")));
 
     protected static void printRatioCell(boolean failed, Ratio ratio, StringBuilder buf) {
         if (ratio != null && ratio.isInitialized()) {
